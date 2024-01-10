@@ -1,12 +1,17 @@
-import { Outlet } from 'react-router-dom'
-import Header from '../../components/Header'
+import { useUserContext } from '@/context/userContext'
+import { Alert } from '@mui/material';
+import AuthHome from './AuthHome';
 
 const Home = () => {
+    const { isUserLogged } = useUserContext();
+
     return (
         <>
-            <Header />
             <main>
-                <Outlet />
+                {!isUserLogged ?
+                    <AuthHome /> :
+                    <Alert severity='info'> Please Login </Alert>
+                }
             </main>
         </>
     )

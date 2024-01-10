@@ -34,7 +34,8 @@ export default {
           "dark": "#14213d",
           "dark-blue": "#17191e",
           "light-blue": "#dfe9ff",
-          "accent": "#5255ca",
+          "accent": "#9496e2",
+          // "accent": "#5255ca",
           "accent-2": "#3F3F5D",
           "danger": "#F00",
           "success": "#0F0"
