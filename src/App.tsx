@@ -2,34 +2,39 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import Home from "./pages/home/Home";
-import Auth from "./components/authentication/Auth";
+import { darkTheme } from "./theme/theme";
+import Layout from "@/layout/Layout";
+import Home from "@/pages/home/Home";
+import NewProject from "@/pages/new/NewProject";
+import { Login } from "@/pages/login/Login";
+import UserContextProvider from "@/context/userContext";
+import NewProjectContextProvider from "./pages/new/context/NewProjectContext";
+import ToastProvider from "./context/ToastContext";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Layout />,
     children: [
       {
-        path: "login",
-        element: <Auth isSignup={false} />
+        index: true,
+        element: <Home />
       },
       {
-        path: "signup",
-        element: <Auth isSignup />
-      }
+        path: "new",
+        element: <NewProjectContextProvider>
+          <NewProject />
+        </NewProjectContextProvider>
+      },
+      {
+        path: "login",
+        element: <Login />
+      },
     ]
   },
 ]);
-
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
 
 function App() {
 
@@ -37,7 +42,12 @@ function App() {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <RouterProvider router={router} />
+        <ToastProvider>
+          <UserContextProvider>
+            <RouterProvider router={router} />
+          </UserContextProvider>
+        </ToastProvider>
+
       </ThemeProvider>
     </>
   )

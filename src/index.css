@@ -1,11 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+}
+
+body.dark{
+  @apply bg-dark-primary text-dark-light font-montserrat;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -27,4 +37,24 @@ h1 {
 .full-h {
   height: calc(100vh - 60px);
   @apply p-2;
+}
+
+.full-screen {
+  @apply min-h-[100vh]  flex items-center justify-center flex-wrap p-4;
+}
+
+.file-uploader {
+  @apply !min-w-[unset];
+}
+
+.file-uploader > input {
+  @apply !w-full
+}
+
+.card{
+  @apply p-4 rounded-lg shadow-sm dark:bg-dark-card;
+}
+
+.MuiInputBase-root.MuiFilledInput-root  {
+  @apply rounded-[.25rem];
 }
