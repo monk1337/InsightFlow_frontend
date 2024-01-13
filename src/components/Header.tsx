@@ -1,8 +1,10 @@
 import { useUserContext } from "@/context/userContext"
+import { Logout } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { isUserLogged} = useUserContext();
+  const { isUserLogged, logout } = useUserContext();
 
   if(!isUserLogged)
     return <></>
@@ -13,6 +15,9 @@ const Header = () => {
         <Link to="/">
           <h1>Voicecord</h1>
         </Link>
+        <IconButton onClick={logout}>
+          <Logout />
+        </IconButton>
       </div>
     </>
   )

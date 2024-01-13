@@ -8,6 +8,7 @@
       "@/layout/*": ["layout/*"],
       "@/pages/*": ["pages/*"],
       "@/theme/*": ["theme/*"],
+      "@/utils/*": ["utils/*"],
     },
 
     "target": "ES2020",
