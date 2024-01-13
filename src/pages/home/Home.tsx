@@ -10,7 +10,7 @@ const Home = () => {
             <main>
                 {!isUserLogged ?
                     <AuthHome /> :
-                    <Alert severity='info'> Please Login </Alert>
+                    <Alert severity='success'> Logged successfully</Alert>
                 }
             </main>
         </>
