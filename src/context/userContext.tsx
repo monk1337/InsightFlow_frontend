@@ -27,6 +27,7 @@ type UserContextType = {
     verifyOtp: (mobile: string, otp: string) => Promise<boolean>
     logout: () => Promise<void>
     setLoggedUser: (mobile: string, role: UserRoleType) => void
+    resetOtpStatus: () => void
 }
 
 
@@ -55,6 +56,7 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
             return;
 
         setLoggedUser(mobile, role);
+        resetOtpStatus();
 
     }
 
@@ -114,7 +116,11 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
 
         setUser(null);
         setUserLogged(false);
-        
+    }
+
+    const resetOtpStatus: UserContextType["resetOtpStatus"] = () => {
+        setOtpVerificationStatus(0);
+        setServerOtp("");
     }
 
     useEffect(() => {
@@ -135,10 +141,8 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
             logout,
             sendOtp,
             verifyOtp,
-            setLoggedUser
-            // signup,
-            // login,
-            // logout
+            setLoggedUser,
+            resetOtpStatus
         }}>
             {children}
         </userContext.Provider>

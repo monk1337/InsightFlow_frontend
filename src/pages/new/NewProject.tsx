@@ -15,7 +15,7 @@ const STEP_NAME = [
 
 const NewProject = () => {
 	const { setSnackbarData } = useToastContext();
-	const { otpVerificationStatus, sendOtp, setLoggedUser } = useUserContext()
+	const { otpVerificationStatus, sendOtp, setLoggedUser, resetOtpStatus } = useUserContext()
 	const { project, createProject } = useNewProjectContext();
 
 	const naviage = useNavigate();
@@ -31,6 +31,7 @@ const NewProject = () => {
 			const res = await createProject();
 			if(res) {
 				setLoggedUser(project.adminMobile, "admin");
+				resetOtpStatus();
 				naviage("/");
 			}
 			return;
