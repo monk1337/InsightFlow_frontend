@@ -6,7 +6,7 @@ const AuthHome = () => {
         <div className='full-screen'>
             <div className='card'>
                 <Typography variant="h3" className='!mb-14'>
-                    Voicecord
+                    InsightFlow
                 </Typography>
                 <div className='flex flex-col gap-4 items-center justify-center'>
                     <Link to="/login?role=recorder">
